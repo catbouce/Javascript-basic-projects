@@ -4,16 +4,16 @@
 
 1. Color Flipper
 
->####Key concepts covered:
+> #### Key concepts covered:
 
--arrays
--document.getElementById()
--document.querySelector()
--addEventListener()
--document.body.style.backgroundColor
--Math.floor()
--Math.random()
--array.length
+- arrays
+- document.getElementById()
+- document.querySelector()
+- addEventListener()
+- document.body.style.backgroundColor
+- Math.floor()
+- Math.random()
+- array.length
 
 
 3. Counter
