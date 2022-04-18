@@ -5,7 +5,7 @@
 1. Color Flipper
 
 > #### Key concepts covered:
-
+>
 - arrays
 - document.getElementById()
 - document.querySelector()
@@ -14,7 +14,7 @@
 - Math.floor()
 - Math.random()
 - array.length
-
+>
 
 3. Counter
 4. Reviews
