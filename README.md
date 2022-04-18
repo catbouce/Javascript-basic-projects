@@ -1,32 +1,32 @@
 # Vanilla JS Projects
 
-#### Enroll In The Course
-
-[My Javascript Course](https://www.udemy.com/course/javascript-tutorial-for-beginners-w/?referralCode=DD9FA6C0D976918D3E1C)
-
-#### Support
-
-Find the Content Useful? [You can always buy me a coffee](https://www.buymeacoffee.com/johnsmilga)
-
-## You can see all projects in action here
-
 [Projects](https://www.vanillajavascriptprojects.com/)
 
 1. Color Flipper
-2. Counter
-3. Reviews
-4. Navbar
-5. Sidebar
-6. Modal
-7. Questions
-8. Menu
-9. Video
-10. Scroll
-11. Tabs
-12. Countdown Timer
-13. Lorem Ipsum
-14. Grocery Bud
-15. Slider
+>####Key concepts covered:
+>
+>-arrays
+>-document.getElementById()
+>-document.querySelector()
+>-addEventListener()
+>-document.body.style.backgroundColor
+>-Math.floor()
+>-Math.random()
+>-array.length
+3. Counter
+4. Reviews
+5. Navbar
+6. Sidebar
+7. Modal
+8. Questions
+9. Menu
+10. Video
+11. Scroll
+12. Tabs
+13. Countdown Timer
+14. Lorem Ipsum
+15. Grocery Bud
+16. Slider
 
 #### Course Exclusive
 
