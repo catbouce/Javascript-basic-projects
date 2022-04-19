@@ -8,26 +8,3 @@
 // const modalOverlay = document.querySelector('.modal-overlay');
 // const closeBtn = document.querySelector('.close-btn');
 
-// modalBtn.addEventListener('click', function(){
-//     modalOverlay.classList.toggle('open-modal');
-//     console.log(`class is: ${modalOverlay.classList}`)
-// })
-
-// closeBtn.addEventListener('click', function(){
-//     modalOverlay.classList.remove('open-modal');
-// })
-
-
-const modalBtn = document.querySelector(".modal-btn");
-const modal = document.querySelector(".modal-overlay");
-const closeBtn = document.querySelector(".close-btn");
-
-
-modalBtn.addEventListener("click", function () {
-        //   modal.classList.add("open-modal");
-        console.log('hello');
-});
-
-closeBtn.addEventListener("click", function () {
-  modal.classList.remove("open-modal");
-});
