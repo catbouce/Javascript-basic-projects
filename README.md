@@ -2,6 +2,8 @@
 
 [Projects](https://www.freecodecamp.org/news/javascript-projects-for-beginners/)
 
+[Demo](https://www.vanillajavascriptprojects.com/)
+
 1. Color Flipper
 
 > #### Key concepts covered:
@@ -16,12 +18,12 @@
 
 2. Counter
 > #### Key concepts covered:
-        -	document.querySelectorAll()
-        -	forEach()
-        -	addEventListener()
-        -	currentTarget property
-        -	classList
-        -	textContent
+          -	document.querySelectorAll()
+          -	forEach()
+          -	addEventListener()
+          -	currentTarget property
+          -	classList
+          -	textContent
         
 3. Reviews
 > #### Key concepts covered:
@@ -30,13 +32,19 @@
       -	addEventListener()
       -	array.length
       -	textContent
-
+      -	img.src
+      -   Math.floor()
+      -   Math.random()
 
 4. Navbar
 > #### Key concepts covered:
       -	document.querySelector()
       -	addEventListener()
+      -	classList.contains()
+      -	classList.remove()
+      -	classList.add()
       -	classList.toggle()
+      -	Template literals ${}
 
 5. Sidebar
 > #### Key concepts covered:
