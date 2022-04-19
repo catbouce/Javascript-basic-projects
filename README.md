@@ -18,12 +18,12 @@
 
 2. Counter
 > #### Key concepts covered:
-          -	document.querySelectorAll()
-          -	forEach()
-          -	addEventListener()
-          -	currentTarget property
-          -	classList
-          -	textContent
+          - document.querySelectorAll()
+          - forEach()
+          - addEventListener()
+          - currentTarget property
+          - classList
+          - textContent
         
 3. Reviews
 > #### Key concepts covered:
@@ -59,14 +59,17 @@
       -	addEventListener()
       -	classList.add()
       -	classList.remove()
+      -	MISTAKE LEARNED
 
 7. Questions/FAQ page
 > #### Key concepts covered:
       -	document.querySelectorAll()
       -	addEventListener()
-      -	forEach()
+      -	forEach() to addEventListener()
+      -	event.currentTarget.parentElement()
       -	classList.remove()
       -	classList.toggle()
+      -	traversing the DOM vs targeting selectors inside element
 
 8. Menu
 > #### Key concepts covered:
