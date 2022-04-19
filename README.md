@@ -59,6 +59,7 @@
       -	addEventListener()
       -	classList.add()
       -	classList.remove()
+      -	MISTAKE LEARNED
 
 7. Questions/FAQ page
 > #### Key concepts covered:
