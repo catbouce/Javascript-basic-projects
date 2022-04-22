@@ -70,6 +70,8 @@
       -	classList.remove()
       -	classList.toggle()
       -	traversing the DOM vs targeting selectors inside element
+      -     Nodelist concept
+      -     CSS: multiple class selectors vs double class selector
 
 8. Menu
 > #### Key concepts covered:
@@ -77,9 +79,12 @@
       -	objects
       -	forEach()
       -	DOMContentLoaded
-      -	map, reduce, and filter
+      -	map(), reduce(), and filter()
       -	innerHTML
       -	includes method
+      -     currentTarget.dataset()
+      -     2 ways of using .join()
+      -     
 
 9. Video background
 > #### Key concepts covered:
@@ -90,11 +95,12 @@
       -	classList.remove()
       -	play()
       -	pause()
+      -     window.addEventListener('load' vs 'DOMContentLoaded')
 
 10.  A navigation bar on scroll
 > #### Key concepts covered:
       -	document.getElementById()
-      -	getFullYear()
+      -	new Date().getFullYear()
       -	getBoundingClientRect()
       -	slice method
       -	window.scrollTo()

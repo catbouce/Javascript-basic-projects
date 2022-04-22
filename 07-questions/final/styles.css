@@ -237,8 +237,19 @@ Questions
 .show-text .question-text {
   display: block; 
   /*
-    if .show-text is added to .question, then .question-text will change from
-    <display: none> to <display:block> 
+    - Multiple class selectors: Select all elements with the class name .question-text 
+        that are descendants (not children) of the element with class .show-text.
+        --> A descendant selector is any selector with white space between two selectors
+         without a combinator (<ul li>, <header h2>, <#info span>, <.class div>)
+        --> Descendant means anywhere nested within it in the DOM tree. Could be a direct child,
+         could be five levels deep, it is still a descendant. This is different than a child 
+         combinator (>) which requires the element to be the next nested level down.
+        --> decedent selector is pretty “expensive” – meaning hard/slow for rendering engines to figure out and do stuff with
+    - In contrast to double class selectors: Select the element which has a class .question-text 
+        and also a class name of .show-text.
+    - if .show-text is added to .question, then .question-text will change from
+        <display: none> to <display:block> 
+    - 
   */
 }
 .minus-icon {

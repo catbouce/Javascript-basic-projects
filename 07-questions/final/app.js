@@ -14,11 +14,9 @@
 /*
     MISTAKES
 1. Do not forget the "." in querySelector()
-2. If querySelectorAll() to select all element, need to use loop if want to add
-    eventListener to each element
-3. Correctly select the parent for that target all the button
-    - first try I targeted the <.question> elements instead of
-      <.question-btn> elements
+2. document.querySelectorAll() only return a Nodelist, not an array, so need to use loop if want to add
+    eventListener to each item element
+3. 
 
 */
 
@@ -54,18 +52,30 @@ function showText(event){
 5. Add <.show-text> to the main parent question (in this case is <.question>)
 */
 
-// //1
-// const btns = document.querySelectorAll('.question-btn');
-
+//1
+const btns = document.querySelectorAll('.question-btn');
+    //console.log(btns);
+    //--> return a Nodelist objects of <button> elements with class <.question-btn>
 // //2.
-// btns.forEach( function(btn){ //in this callback function we could access each of btns items
-//    //3.
-//     btn.addEventListener('click', function(e){ //in this callback function we want to access to the event object
-//     //4.
-//     const question = e.currentTarget.parentElement.parentElement;
-//     question.classList.toggle('show-text'); //5.
-//    })
-// })
+btns.forEach( function(btn){ //in this callback function we could access each of btns items
+        //console.log(btn);
+        //---> return a list of <button> elements and its siblings
+       //3.
+    btn.addEventListener('click', function(e){ //in this callback function we want to access to the event object
+        // addEventListner to each <button> item with class <.question-btn>
+        //4. 
+    const question = e.currentTarget.parentElement.parentElement;
+        // console.log(question);
+         // ---> return the <article> with class .question that was clicked
+        const questions = document.querySelectorAll('.question');
+        questions.forEach(function(item){
+          if(item !== question){
+              item.classList.remove('show-text');
+          }
+        })
+        question.classList.toggle('show-text'); //5.
+   })
+})
 
 
 /*
@@ -78,36 +88,44 @@ function showText(event){
 6. Loop over the parent elements to check if current clicked children is 
     contain <show-text>
 7. Remove the <show-text> if the children is not currently clicked
-8. Add <.show-text> to the parent when clicked (<.question-btn>)
+8. Add <.show-text> to the parent when clicked (<.question>)
 */
 
-//1
-const questions = document.querySelectorAll('.question');
-//console.log(questions); will target only <article> elements
+// //1
+// const questions = document.querySelectorAll('.question');
+// /*
+//     console.log(questions)
+//     - return a static (not live) NodeList objects of <article> elements with class <.question>
+//     - static NodeList means any changes in the DOM does not affect the content of the collection.
+//     - NodeList is not an Array, it is possible to iterate over it with forEach(). 
+//     - It can also be converted to a real Array using Array.from()
+// */
+// //2
+// questions.forEach(function(question){
+//    /*
+//     forEach() method executes a provided callbackFn function once for each array element.
 
-//2
-questions.forEach(function(question){
-   //console.log(question); //3. will target all <.question> elements
-    const btn = question.querySelector('.question-btn');
-    //console.log(btn); // 4. will target all <.question-btn> children elements of <.question>
-    /*5.
-    <question> target the article
-    <btn> target an element within the article
-    */
-    btn.addEventListener('click', function(){
-        /*
-        - need to loop over all of the <article> questions to check if there is a question
-            that is currently open
-            --> loop over <.questions> parent elements and check if each item is equal to the clicked <question>
-        - if they are not equal then remove the <show-text> off item list
-        */
-        questions.forEach(function(item){
-            //console.log(item); //6. return all the <.question-btn> class with <show-text> added if it's currently open
-            if (item!== question){
-                item.classList.remove('show-text'); //7
-            }
-        })
-        question.classList.toggle('show-text');//8.
-    })
-})
+//     4. console.log(question);
+//      - return a list of <article>.question elements <.question>
+    
+//      - <questions> target the article
+//      - <question> target an element within the article
+//     */
+//     question.addEventListener('click', function(){
+//         /*
+//         - need to loop over all of the <article> questions to check if there is a question
+//             that is currently open
+//             --> loop over <.questions> parent elements and check if each item is equal to the clicked <question>
+//         - if they are not equal then remove the <show-text> off item list
+//         */
+//         questions.forEach(function(item){
+//             //console.log(item); 
+//                 //6. item = question since it is looping over the same parent <.question> article
+//             if (item!== question){
+//                 item.classList.remove('show-text'); //7
+//             }
+//         })
+//         question.classList.toggle('show-text');//8.
+//     })
+// })
 
