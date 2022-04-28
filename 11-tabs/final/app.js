@@ -29,7 +29,12 @@
             + type: underfined vs object (or a primitive value to be precise)
             + comparing: undefined == null (true, as compared values only)
                          undefined === null (false, as compared values + type)
-*/
+            + undefined/null == true --> "is undefined/null equal to true" -> false
+              undefined/null == false --> "is undefined/null value equal to false"  -> false
+                    => undefined/null have NO VALUE, while true/false has value of 1 or 0
+                        so it's not equal
+    Good website on truthy vs falsy topic: https://www.sitepoint.com/javascript-truthy-falsy/
+              */      
 
 const tabBtns = document.querySelectorAll('.tab-btn');
 const about = document.querySelector('.about');

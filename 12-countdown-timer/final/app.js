@@ -39,7 +39,7 @@ let tempDay = tempDate.getDate();
   - "tempMonth + 1" to add extra month to the month
 */
 
-const date = new Date(tempYear,tempMonth + 1,tempDay,11,30,0);
+const date = new Date(tempYear,tempMonth,tempDay,19,10,0);
 
 let year = date.getFullYear();
 let month = months[date.getMonth()];
@@ -48,8 +48,21 @@ let weekday = weekdays[date.getDay()];
 let hour = date.getHours();
 let minute = date.getMinutes();
 
-giveAway.textContent = `Giveaway Ends On ${weekday},${day} ${month} ${year}, ${hour}:${minute}`
+giveAway.textContent = `Giveaway Ends On ${weekday},${day} ${month} 
+                      ${year}, ${hour}:${minute}`
 
+
+
+
+/*
+  - setInterval() method, offered on the Window and Worker interfaces, 
+  repeatedly calls a function or executes a code snippet, with a fixed 
+  time delay between each call
+    + This method returns an interval ID which uniquely identifies the 
+    interval, so you can remove it later by calling clearInterval()
+*/
+
+function getRemainingTime(){
 //1s = 1000
 //1min = 60s
 //1hour= 60min
@@ -72,4 +85,8 @@ const value = [days,hours,mins,seconds];
 deadline.forEach(function(item,index){
   item.innerHTML = value[index];
 })
-console.log(days); 
+}
+
+let timeInterval = setInterval(getRemainingTime,1000);
+
+getRemainingTime();
