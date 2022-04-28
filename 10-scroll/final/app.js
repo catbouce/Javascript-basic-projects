@@ -1,5 +1,11 @@
 "use strict"
+
 // ********** set date ************
+/* STEPS BY STEPS
+1. Get the date button/element
+2.Update innerHTML with new Date().getfullyear()
+*/
+
 /* 
     The only correct way to instantiate a new Date object is by using 
     the new operator. If you call the Date object directly, such as 
@@ -9,7 +15,23 @@
 const date = document.getElementById('date').innerHTML = new Date().getFullYear();
 
 
-// ********** close links ************
+
+
+
+// ********** toggle links/nav bar ************
+
+/* STEPS BY STEPS
+1. Get the element for toggle & links container
+2. AddEventLister to nav bar
+    . add ".show-links" to links container
+    ---> downside of this approach/not dynamic if new links added
+3. Apply .getBoundingClientRect() on both links container and links to get the element height
+    - Element.getBoundingClientRect() method returns the size of an 
+    element and its position relative to the viewport.
+4. Set up if container height is 0, then its height should be links height (this will be considered as inline CSS)
+5. 
+*/
+
 /*
     - Element.getBoundingClientRect() method returns a DOMRect object provide
     the size of element and its position relative to the viewport.
@@ -45,6 +67,17 @@ navToggle.addEventListener('click',function(){
 
 
 // ********** fixed navbar ************
+/* STEPS BY STEPS
+1. Get the nav bar and top links element
+2. AddEventListener on scroll event
+3. Get the page pixel by .pagheYOffset
+    pageYOffset is a read - only window property that returns the number of pixels the document has been scrolled vertically.
+4. If statement: if scroll height > nav height
+    then add .fixed-nav to nav bar element
+    otherwise remove it 
+5. If statement: if scroll height > 500 pixel
+    add/remove .show-link from top-link
+*/
 /*
     - window.pageYOffset is a read - only window property that returns the number 
     of pixels the document has been scrolled vertically.
@@ -73,6 +106,24 @@ window.addEventListener('scroll',function(){
 
 
 // ********** smooth scroll ************
+// select links
+
+/* STEPS BY STEPS
+1. Get all of scroll link elements
+2. Loop over each of them to addEventListener
+3. Use preventDefault() on event
+4. Navigate to specific spot by .getAttribute().slice to get the ID then get the element
+5. Caculate the exact heights for section position if nav bar is fixed
+    -   get the position by subtract nav height from element.offsetTop
+    Caculate the exact heights for section position if nav bar is static
+    - if nav contain .fixed-nav then position - 2 navbar
+    - if nav height > 82 then position + container height
+6. use window.scrollTo() to set the position 
+7. set links container height to 0 so it closes nav bar when we scroll
+
+
+*/
+
 /*
     - document.querySelectorAll(): returns a static (not live) NodeList => if a classlist is added
     by JS it will not be included in the NodeList

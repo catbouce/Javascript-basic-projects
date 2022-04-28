@@ -33,8 +33,8 @@
       -	array.length
       -	textContent
       -	img.src
-      -   Math.floor()
-      -   Math.random()
+      -     Math.floor()
+      -     Math.random()
 
 4. Navbar
 > #### Key concepts covered:

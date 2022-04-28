@@ -197,7 +197,6 @@ Scroll
 nav {
   background: var(--clr-white);
   padding: 1rem 1.5rem;
-  
 }
 /* fixed nav */
 .fixed-nav {
@@ -237,12 +236,13 @@ nav {
   height: 50px;
 }
 .links-container {
-  height: 0;
+  height: 0; /*by default height is 0*/
   overflow: hidden;
   transition: var(--transition);
 }
+/*add this links to toggle nav bar*/
 .show-links {
-  height: 200px;
+  height: 200px; /*not best approach if added new links*/
 }
 .links a {
   background: var(--clr-white);
@@ -276,10 +276,10 @@ nav {
   .nav-toggle {
     display: none;
   }
-  /* IMPORTANT */
-  /* as HTMLElement.style added INLINE style, we need !important to override it */
   .links-container {
-    height: auto !important; 
+    height: auto !important; /*IMPORTANT: without it
+    the nav bar won't adjust its height when adjusting the
+    screen size*/
   }
   .links {
     display: flex;
@@ -355,7 +355,6 @@ footer p {
   margin-bottom: 0;
 }
 
-/* back to top button */
 .top-link {
   font-size: 1.25rem;
   position: fixed;
@@ -369,11 +368,11 @@ footer p {
   border-radius: var(--radius);
   color: var(--clr-white);
   animation: bounce 2s ease-in-out infinite;
-  /* the button is hidden by default */
+ /* make the back to top button hidden by default */
   visibility: hidden;
   z-index: -100;
 }
-/* toggle this class to show the button when scroll to certain pixel vertically */
+/* toggle this class to show back to top button */
 .show-link {
   visibility: visible;
   z-index: 100;
