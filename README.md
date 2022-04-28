@@ -102,9 +102,14 @@
       -	document.getElementById()
       -	new Date().getFullYear()
       -	getBoundingClientRect()
-      -	slice method
+      -	slice() method
       -	window.scrollTo()
-
+      -     HTMLElement.style
+      -     window.pageYOffset
+      -     document.querySelectorAll()
+      -     event.preventDefault()
+      -     element.getAttribute()
+      -     HTMLElement.offsetTop
 
 11.  Tabs that display different content
 > #### Key concepts covered:
@@ -112,6 +117,8 @@
       -	classList.remove()
       -	forEach()
       -	addEventListener()
+      -     Event.target()
+      -     IF or BOOLEAN
 
 12.  Countdown Timer
 > #### Key concepts covered:
