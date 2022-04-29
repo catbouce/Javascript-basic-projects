@@ -33,7 +33,7 @@
               undefined/null == false --> "is undefined/null value equal to false"  -> false
                     => undefined/null have NO VALUE, while true/false has value of 1 or 0
                         so it's not equal
-    Good website on truthy vs falsy topic: https://www.sitepoint.com/javascript-truthy-falsy/
+    - Good website on truthy vs falsy topic: https://www.sitepoint.com/javascript-truthy-falsy/
               */      
 
 const tabBtns = document.querySelectorAll('.tab-btn');

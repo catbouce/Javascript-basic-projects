@@ -110,6 +110,7 @@
       -     event.preventDefault()
       -     element.getAttribute()
       -     HTMLElement.offsetTop
+      -     window.addEventListener('scroll')
 
 11.  Tabs that display different content
 > #### Key concepts covered:
@@ -137,6 +138,7 @@
       -	isNaN()
       -	slice method
       -	event.preventDefault()
+      -     .addEventListener('submit')
 
 14.  Grocery List
 > #### Key concepts covered:

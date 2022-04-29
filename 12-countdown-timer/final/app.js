@@ -27,6 +27,7 @@ const weekdays = [
 */
 const giveAway = document.querySelector('.giveaway');
 const deadline = document.querySelectorAll('.deadline h4');
+const innerDeadline = document.querySelector('.deadline');
 
 let tempDate = new Date();
 let tempYear = tempDate.getFullYear();
@@ -39,7 +40,7 @@ let tempDay = tempDate.getDate();
   - "tempMonth + 1" to add extra month to the month
 */
 
-const date = new Date(tempYear,tempMonth,tempDay,19,10,0);
+const date = new Date(tempYear,tempMonth,tempDay,17,40,0);
 
 let year = date.getFullYear();
 let month = months[date.getMonth()];
@@ -49,10 +50,7 @@ let hour = date.getHours();
 let minute = date.getMinutes();
 
 giveAway.textContent = `Giveaway Ends On ${weekday},${day} ${month} 
-                      ${year}, ${hour}:${minute}`
-
-
-
+                      ${year}, ${hour}:${minute}`;
 
 /*
   - setInterval() method, offered on the Window and Worker interfaces, 
@@ -74,17 +72,30 @@ const oneMin = 60*1000;
 const futureTime = date.getTime();
 const today = new Date().getTime();
 const remainingTime = futureTime - today;
+console.log(remainingTime);
 
 let days = Math.floor(remainingTime / oneDay);
-let hours = Math.floor((futureTime%oneDay)/oneHour);
-let mins = Math.floor((futureTime%oneHour)/oneMin);
-let seconds = Math.floor((futureTime%oneMin)/1000);
+let hours = Math.floor((remainingTime%oneDay)/oneHour);
+let mins = Math.floor((remainingTime%oneHour)/oneMin);
+let seconds = Math.floor((remainingTime%oneMin)/1000);
 
 const value = [days,hours,mins,seconds];
 
+function format(item){
+  if(item < 10){
+    return `0${item}`;
+  }
+  return item;
+}
 deadline.forEach(function(item,index){
-  item.innerHTML = value[index];
+  item.innerHTML = format(value[index]);
 })
+
+//remainingTime == 0 doesn't work since remainingTime never = 0
+if (remainingTime < 0){
+  clearInterval(timeInterval);
+  innerDeadline.innerHTML = `<h4 class="expired"> sorry, the giveaway has expired!</h4>`;
+}
 }
 
 let timeInterval = setInterval(getRemainingTime,1000);
