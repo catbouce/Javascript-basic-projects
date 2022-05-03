@@ -36,6 +36,8 @@
     - Good website on truthy vs falsy topic: https://www.sitepoint.com/javascript-truthy-falsy/
               */      
 
+
+    
 const tabBtns = document.querySelectorAll('.tab-btn');
 const about = document.querySelector('.about');
 const content = document.querySelectorAll('.content');
