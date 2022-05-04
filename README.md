@@ -142,13 +142,16 @@
 
 14.  Grocery List
 > #### Key concepts covered:
-    -	DOMContentLoaded
-    -	new Date()
-    -	createAttribute()
-    -	setAttributeNode()
-    -	appendChild()
-    -	filter()
-    -	map()
+    -	      DOMContentLoaded
+    - 	new Date()
+    -       .createElement()
+    - 	.createAttribute()
+    -	      .setAttributeNode()
+    - 	.appendChild()
+    -	      filter()
+    - 	map()
+    -       settimeout()
+    -       .removeChild()
 
 15.  Image Slider
 > #### Key concepts covered:
