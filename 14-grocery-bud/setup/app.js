@@ -1,3 +1,10 @@
+/**************************************************************************
+------------MISTAKES-------------------
+- if an element is populated dynamically, the EventListener needed to be added
+    when the element is created
+
+ ***************************************************************************/
+
 // ****** SELECT ITEMS **********
 
 const groceryForm = document.querySelector('.grocery-form');
@@ -5,6 +12,7 @@ const input = document.getElementById('grocery');
 const list = document.querySelector('.grocery-list');
 const groceryContainer = document.querySelector('.grocery-container');
 const clearBtn = document.querySelector('.clear-btn');
+
 
 // edit option
 let editFlag = false;
@@ -55,6 +63,13 @@ function addItem(e){
                                 </div>`;
         //6. append the article element to the parent element
         list.appendChild(groceryItem);
+        //IMPORTANT: eventListner need to be added at this step since we 
+        //populate the button dynamically
+        const editBtn = document.querySelector('.edit-btn');
+        const deleteBtn = document.querySelector('.delete-btn');
+        editBtn.addEventListener('click',editItem);
+        deleteBtn.addEventListener('click',deleteItem);
+        
         //display alert-sucess class
         displayAlert('Item added to the list!','success')
         //have to use this container instead of grocery-list so the clear button is not hidden
@@ -101,6 +116,7 @@ function displayAlert(text,alertClass){
  ***************************************************************************/
 //function to clear all items
 function clearAll(){
+    let start = performance.now();
     //select all the grocery-item element
     const items = document.querySelectorAll('.grocery-item');
     //console.log(items); return a NodeList of all articles with class grocery-item
@@ -111,12 +127,53 @@ function clearAll(){
         })
     }
     //hide the container to remove the clear list button
+    //IMPORTANT: the clear-btn get delayed before disapearing with other items
     groceryContainer.classList.remove('show-container');
     //display alert-danger 
     displayAlert('empty list!','danger');
     //set back to default
     //local storage
+    let end = performance.now() - start;
+    console.log('time procesed 1: ' + end);
 } 
+
+//function to delete an item 
+/*
+(1). Select delete btn, add event listener to each btn
+ //this approach doesn't work because we added the button dynamically
+ //eventListener is added when element is created
+2. When clicked, trigger delete function
+3. Get the parent element and then remove its child (target deleted item)
+(3). On each event, grab the ID
+(4). Grab the parent element and remove the child based on the id
+    //3 & 4 are not applicable
+4. Remove the clear-btn if there is no item left
+5. Display alert
+*/
+function deleteItem(e){
+    //get the parent element of child item to remove it
+     list.removeChild(e.currentTarget.parentElement.parentElement);
+    //remove the clear-btn and show-container class
+     if (list.children.length === 0){
+        groceryContainer.classList.remove('show-container');
+     }
+     setToDefault();
+}
+
+//function to edit an item
+/*
+    (1). Select edit btn, add event listener to each btn
+        //this method doesn't work because we added the button dynamically
+    1. Select the parent container and listen to which child element is clicked
+    2. When clicked, trigger edit function
+    3. On each event, grab the ID and title
+    3. Display the title in the input value, change submit button to edit btn
+    4. Get the new value from user and update the title based on the ID
+    5. Display alert and get back to default
+*/
+function editItem(e){
+    console.log('edit item');
+}
 
 //function to set back to default
 function setToDefault(){

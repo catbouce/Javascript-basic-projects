@@ -118,7 +118,7 @@
       -	classList.remove()
       -	forEach()
       -	addEventListener()
-      -     Event.target()
+      -     event.target()
       -     IF or BOOLEAN
 
 12.  Countdown Timer
