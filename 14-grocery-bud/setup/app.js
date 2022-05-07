@@ -12,11 +12,12 @@ const input = document.getElementById('grocery');
 const list = document.querySelector('.grocery-list');
 const groceryContainer = document.querySelector('.grocery-container');
 const clearBtn = document.querySelector('.clear-btn');
-
+const submitBtn = document.querySelector('.submit-btn');
 
 // edit option
 let editFlag = false;
 let editID = "";
+let editElement = "";
 
 // ****** EVENT LISTENERS **********
 //submit event
@@ -78,10 +79,15 @@ function addItem(e){
         //add to local storage
         //set back to default
         setToDefault();
+        console.log(editElement + editFlag);
     }
     //if value is not empty  and edit is true
     else if (inputValue && editFlag) {
-        console.log(inputValue);
+        editElement.innerHTML = inputValue;
+        displayAlert('Item editted!','success');
+        setToDefault();
+        console.log(editFlag);
+        console.log(editElement + editFlag);
     }
     else {
         displayAlert('Please input a value','danger');
@@ -172,14 +178,26 @@ function deleteItem(e){
     5. Display alert and get back to default
 */
 function editItem(e){
-    console.log('edit item');
+    console.log(`editItem: ${e.currentTarget}`);
+    //get the item value (.title)
+    editElement = e.currentTarget.parentElement.previousElementSibling;
+    //assign the value to the input value
+    input.value = editElement.innerHTML;
+    //submitBtn.textContent = 'edit';
+    submitBtn.innerText = 'Edit';
+    editFlag = true;
+    console.log(`edit element: ${editElement} - edit flag: ${editFlag}`);
+    
 }
 
 //function to set back to default
 function setToDefault(){
     //clear the input area
     input.value = '';
-   
+    editFlag = false;
+    editID = "";
+    editElement = "";
+    submitBtn.textContent = 'submit';
 
 }
 

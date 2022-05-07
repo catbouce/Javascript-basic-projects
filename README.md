@@ -152,6 +152,7 @@
     - 	map()
     -       settimeout()
     -       .removeChild()
+    -       .previousElementSibling
 
 15.  Image Slider
 > #### Key concepts covered:
