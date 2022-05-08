@@ -17,14 +17,15 @@ const submitBtn = document.querySelector('.submit-btn');
 // edit option
 let editFlag = false;
 let editID = "";
-let editElement = "";
+let editElement;
 
 // ****** EVENT LISTENERS **********
 //submit event
 groceryForm.addEventListener('submit',addItem);
 //clear event
 clearBtn.addEventListener('click',clearAll);
-
+//load items from localStorage
+window.addEventListener('DOMContentLoaded',displayList);
 
 // ****** FUNCTIONS **********
 /**************************************************************************
@@ -35,59 +36,32 @@ clearBtn.addEventListener('click',clearAll);
 function addItem(e){
     //prevent the default event from submitting the grocery item to a server
     e.preventDefault();
-    const inputValue = input.value;
-    //if value not empty (inputValue !== "") and edit not true (add new grocerry item)
-    if (inputValue && !editFlag){
-        //Steps in create an grocery item dynamically
-        //1.Create an HTML article element
-        const groceryItem = document.createElement('article');
-        //each article has unique data-id attribute 
-        const id = new Date().getTime().toString();
-        //2.Add a class to the article element
-        groceryItem.classList.add('grocery-item');
-        //3.Create an attribute and update its value
-        const dataAttr = document.createAttribute('data-id');
-        dataAttr.value = id;
-        //4.Attach the attribute and its value to the article element
-        groceryItem.setAttributeNode(dataAttr);
-        //5.Update article's HTML 
-        groceryItem.innerHTML = `<p class="title">${inputValue}</p>
-                                <div class="btn-container">
-                                <!-- edit btn -->
-                                <button type="button" class="edit-btn">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <!-- delete btn -->
-                                <button type="button" class="delete-btn">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                                </div>`;
-        //6. append the article element to the parent element
-        list.appendChild(groceryItem);
-        //IMPORTANT: eventListner need to be added at this step since we 
-        //populate the button dynamically
-        const editBtn = document.querySelector('.edit-btn');
-        const deleteBtn = document.querySelector('.delete-btn');
-        editBtn.addEventListener('click',editItem);
-        deleteBtn.addEventListener('click',deleteItem);
-        
+    const value = input.value;
+    //each article has unique data-id attribute 
+    const id = new Date().getTime().toString();
+
+    //if value not empty (value !== "") and edit not true (add new grocerry item)
+    if (value && !editFlag){
+        createItem(id,value);
         //display alert-sucess class
         displayAlert('Item added to the list!','success')
         //have to use this container instead of grocery-list so the clear button is not hidden
         // grocery-container is hidden by default
         groceryContainer.classList.add('show-container');
         //add to local storage
+        addToLocalStorage(id,value);
         //set back to default
         setToDefault();
-        console.log(editElement + editFlag);
     }
     //if value is not empty  and edit is true
-    else if (inputValue && editFlag) {
-        editElement.innerHTML = inputValue;
+    else if (value && editFlag) {
+        editElement.innerHTML = value;
+        console.log(editID);
+        editLocalStorage(editID,value);
+        console.log(editID);
         displayAlert('Item editted!','success');
         setToDefault();
-        console.log(editFlag);
-        console.log(editElement + editFlag);
+        
     }
     else {
         displayAlert('Please input a value','danger');
@@ -122,7 +96,6 @@ function displayAlert(text,alertClass){
  ***************************************************************************/
 //function to clear all items
 function clearAll(){
-    let start = performance.now();
     //select all the grocery-item element
     const items = document.querySelectorAll('.grocery-item');
     //console.log(items); return a NodeList of all articles with class grocery-item
@@ -137,10 +110,10 @@ function clearAll(){
     groceryContainer.classList.remove('show-container');
     //display alert-danger 
     displayAlert('empty list!','danger');
+     //clear local storage that has a key called 'list'
+    localStorage.removeItem('list');
     //set back to default
-    //local storage
-    let end = performance.now() - start;
-    console.log('time procesed 1: ' + end);
+    
 } 
 
 //function to delete an item 
@@ -163,6 +136,9 @@ function deleteItem(e){
      if (list.children.length === 0){
         groceryContainer.classList.remove('show-container');
      }
+     //delete item in localStorage
+     let itemsID = e.currentTarget.parentElement.parentElement.dataset.id;
+     removeFromLocalStorage(itemsID);
      setToDefault();
 }
 
@@ -178,7 +154,6 @@ function deleteItem(e){
     5. Display alert and get back to default
 */
 function editItem(e){
-    console.log(`editItem: ${e.currentTarget}`);
     //get the item value (.title)
     editElement = e.currentTarget.parentElement.previousElementSibling;
     //assign the value to the input value
@@ -186,8 +161,7 @@ function editItem(e){
     //submitBtn.textContent = 'edit';
     submitBtn.innerText = 'Edit';
     editFlag = true;
-    console.log(`edit element: ${editElement} - edit flag: ${editFlag}`);
-    
+    editID = e.currentTarget.parentElement.parentElement.dataset.id;
 }
 
 //function to set back to default
@@ -196,15 +170,121 @@ function setToDefault(){
     input.value = '';
     editFlag = false;
     editID = "";
-    editElement = "";
+    editElement; 
     submitBtn.textContent = 'submit';
 
 }
 
+/**************************************************************************
+- getItem() method of the Storage interface, when passed a key name, will 
+    return that key's value as an object string, or null if the key does not exist
+    + E.g: localStorage.getItem('user') -> “{“name”:”Obaseki Nosa”,”location”:”Lagos”}"
+- to use this value, we convert it back to an object by using JSON.parse() method
+    + JSON.parse(localStorage.getItem('user'));
+- setItem() method of the Storage interface, when passed a key name and value, will
+    add that key to the given Storage object, or update that key's value if it already exists
+    + setItem(keyName, keyValue) where keyName and keyValue are both strings
+    + localStorage can only store strings. To store arrays or objects,we need to convert 
+      them to strings by JSON.stringify()
+- JSON.stringify() method converts a JavaScript object or value to a JSON string
+    + localStorage.setItem('user', JSON.stringify(person))
+ ***************************************************************************/
 // ****** LOCAL STORAGE **********
+function addToLocalStorage(id,value){
+    //shorthand if prop names are matching with key and values in ES6 for {id:id, value:value}
+    const grocery = {id, value};
+    let items = getLocalStorage();
+    //push the new item grocery to the array
+    items.push(grocery);
+    //convert the items array to a JSON string and add the items as value and 'list' as id
+    localStorage.setItem('list',JSON.stringify(items));
+    
+}
+
+function removeFromLocalStorage(id){
+    //receive an array with objects
+    let items = getLocalStorage();
+    //filter the items that don't match the id and return a new array
+    items = items.filter(function(item){
+        if (item.id !== id){
+            return item;
+        }
+    })
+    console.log(items);
+    //add the new array to local storage (override the values with this new list)
+    localStorage.setItem('list',JSON.stringify(items));
+}
+
+function editLocalStorage(id,value){
+    let items = getLocalStorage();
+    console.log(`id: ${id} and value: ${value}`);
+    items = items.map(function(item){
+        if (item.id === id){
+            item.value = value;
+        }
+        return item;
+    })
+    localStorage.setItem('list',JSON.stringify(items));
+}
+
+function getLocalStorage(){
+    //if there is item with id 'list' then assign items to our items variable
+    //if not then return an empty array
+    //our first run will always return an empty array, then everytime we call this function
+    //our list item will be overriden
+    return localStorage.getItem('list')
+        ? JSON.parse(localStorage.getItem('list'))
+        :[];
+}
 
 // ****** SETUP ITEMS **********
-
+function displayList(){
+    let items = getLocalStorage();
+    if(items.length > 0) {
+        items.forEach(function(item){
+            createItem(item.id, item.value);
+        })
+        groceryContainer.classList.add('show-container');
+    }
+}
+function createItem(id,value){
+    //Steps in create an grocery item dynamically
+        //1.Create an HTML article element
+        const groceryItem = document.createElement('article');
+        //2.Add a class to the article element
+        groceryItem.classList.add('grocery-item');
+        //3.Create an attribute and update its value
+        const dataAttr = document.createAttribute('data-id');
+        dataAttr.value = id;
+        //4.Attach the attribute and its value to the article element
+        groceryItem.setAttributeNode(dataAttr);
+        //5.Update article's HTML 
+        groceryItem.innerHTML = `<p class="title">${value}</p>
+                                <div class="btn-container">
+                                <!-- edit btn -->
+                                <button type="button" class="edit-btn">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <!-- delete btn -->
+                                <button type="button" class="delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                </div>`;
+        //IMPORTANT: eventListner need to be added at this step since we 
+        //populate the button dynamically
+        //MISTAKE:  document.querySelector starts with the first element in the 
+        //document markup and the grocery-item has not been appended yet
+        // const editBtn = document.querySelector('.edit-btn');
+        // const deleteBtn = document.querySelector('.delete-btn');
+        const editBtn = groceryItem.querySelector('.edit-btn');
+        const deleteBtn = groceryItem.querySelector('.delete-btn');
+        editBtn.addEventListener('click',editItem);
+        deleteBtn.addEventListener('click',deleteItem);
+        
+        //6. append the article element to the parent element
+        list.appendChild(groceryItem);
+        
+}
 /**************************************************************************
 
 

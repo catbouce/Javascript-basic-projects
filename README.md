@@ -153,13 +153,15 @@
     -       settimeout()
     -       .removeChild()
     -       .previousElementSibling
+    -       element.querySelector vs document.querySelector
+    -       .localStorage
 
 15.  Image Slider
 > #### Key concepts covered:
-    -	querySelectorAll()
-    -	addEventListener()
-    -	forEach()
-    -	if/else statements
+    -	      querySelectorAll()
+    - 	addEventListener()
+    - 	forEach()
+    -	      if/else statements
 
 #### Course Exclusive
 
