@@ -7,14 +7,15 @@
 1. Color Flipper
 
 > #### Key concepts covered:
-          - arrays
-          - document.getElementById()
-          - document.querySelector()
-          - addEventListener()
-          - document.body.style.backgroundColor
-          - Math.floor()
-          - Math.random()
-          - array.length
+      -     arrays
+      -     document.getElementById()
+      -     document.querySelector()
+      -     addEventListener()
+      -     document.body.style.backgroundColor
+      -     Math.floor()
+      -     Math.random()
+      -     array.length
+      -     CSS custom properties
 
 2. Counter
 > #### Key concepts covered:
