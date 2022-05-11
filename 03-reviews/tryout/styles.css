@@ -187,6 +187,9 @@ Reviews
   box-shadow: var(--light-shadow);
   /* border: 1px solid grey; */
 }
+.review:hover {
+  box-shadow: var(--dark-shadow);
+}
 .img-container {
   height: 150px;
   width: 150px;
@@ -256,4 +259,9 @@ Reviews
   border-radius: var(--radius);
   background-color: var(--clr-primary-10);
   color: var(--clr-primary-5);
+  cursor: pointer;
+  font-size: 15px;
+}
+.random-btn:hover {
+  box-shadow: 0 5px 15px rgba(33, 220, 223, 0.2);
 }
