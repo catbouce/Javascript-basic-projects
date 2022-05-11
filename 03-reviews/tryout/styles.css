@@ -17,6 +17,7 @@ Variables
    --clr-primary-5: hsl(205, 78%, 60%);
    --clr-primary-7: hsl(205, 90%, 76%);
    --clr-primary-10: hsl(205, 100%, 96%);
+   --clr-grey-10: hsl(210, 36%, 96%);
   /* dark shades of primary color*/
   --clr-white: #fff;
   --clr-black: #222;
@@ -62,11 +63,51 @@ h4 {
 h2 {
   font-size: 2rem;
 }
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*  global classes */
+
+/* section */
+.section {
+  padding: 5rem 0;
+}
+
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
 main {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  border: 2px solid gold;
 }
 
 /*
@@ -77,20 +118,19 @@ Title
 .container {
   width: 80vw;
   max-width: var(--fixed-width);
-  border: 2px solid gold;
+  /* border: 2px solid gold; */
 }
 .title {
+  color: var(--clr-primary-1);
   text-align: center;
-  margin-bottom: 4rem;
-  border: 1px solid gold;
+  margin-bottom: 5rem;
+  /* border: 1px solid gold; */
 }
 .underline {
   height: 0.25rem;
-  background: var(--clr-primary-5);
+  background-color: var(--clr-primary-5);
   width: 5rem;
   margin: auto;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
 }
 
 /*
@@ -100,97 +140,25 @@ Reviews
 */
 .review {
   text-align: center;
+  line-height: 1.5rem;
   padding: 1.5rem 2rem;
-  background: var(--clr-white);
   border-radius: var(--radius);
-  box-shadow: var(--light-shadow);
-  /* transition: var(--transition); */
+
   border: 1px solid grey;
-}
-.review:hover {
-  box-shadow: var(--dark-shadow);
 }
 .img-container {
   height: 150px;
   width: 150px;
   border-radius: 50%;
+  border-color: transparent;
   position: relative;
-  margin: 0 auto; /*center the pic frame*/
+  margin: 0 auto;
   margin-bottom: 1.5rem;
-  /* border: 1px solid grey; */
 }
 #person-img {
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: cover;
   border-radius: 50%;
-  /* display: block; */
-  position: relative;/*bring the pic above .img-container::before*/
-}
-.img-container::after {
-  font-family: "Font Awesome 5 Free";
-  content: "\f10e";
-  font-weight: 900;
-  background: var(--clr-primary-5);
-  color: var(--clr-white);
-  position: absolute;/* bring the quote from bottom to top right corner*/
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  display: grid;/*bring the quote from top right corner to bottom left corner*/
-  place-items: center;/*center the quote in blue circle*/
-  top: 0;/*bring the quote from bottom left to top left*/
-  left: 0;
-  transform: translateY(25%);/*move the quote down 25%*/
-}
-.img-container::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: var(--clr-primary-5);
   position: absolute;
-  top: -0.25rem;
-  right: -0.5rem;
-  border-radius: 50%;
-}
-#author {
-  margin-bottom: 0.25rem;
-}
-#job {
-  text-transform: uppercase;
-  color: var(--clr-primary-5);
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-}
-#info {
-  margin-bottom: 0.75rem;
-}
-.prev-btn,
-.next-btn {
-  color: var(--clr-primary-7);
-  background: transparent;
-  border-color: transparent;
-  font-size: 1.25rem;
-  margin: 0 0.5rem;
-  cursor: pointer;
-  /* transition: var(--transition); */
-}
-.prev-btn:hover,
-.next-btn:hover {
-  color: var(--clr-primary-5);
-}
-.random-btn {
-  background: var(--clr-primary-10);
-  color: var(--clr-primary-5);
-  padding: 0.25rem 0.5rem;
-  text-transform: capitalize;
-  border-radius: var(--radius);
-  border-color: var(--clr-primary-5);
-  margin-top: 0.5rem;
-  /* transition: var(--transition); */
-  cursor: pointer;
-}
-.random-btn:hover {
-  background: var(--clr-primary-5);
-  color: var(--clr-primary-1);
 }
