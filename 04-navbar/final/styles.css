@@ -3,7 +3,7 @@
 Fonts
 ===============
 */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
 
 /*
 =============== 
@@ -43,8 +43,8 @@ Variables
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
-  --ff-primary: 'Roboto', sans-serif;
-  --ff-secondary: 'Open Sans', sans-serif;
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
@@ -65,6 +65,7 @@ Global Styles
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px dashed gold; */
 }
 body {
   font-family: var(--ff-secondary);
@@ -198,19 +199,20 @@ nav {
 .social-icons {
   display: none;
 }
-
-/* HIDE LINKS BY DEFAULT */
 .links {
+  /* IMPORTANT TO ADD 
+    - the class "show-links" is added/removed automatically with JS
+    - if "height: auto" is not added
+    - then the height of the Nav links when screen is over 800px
+    - will be either <height: 10rem;> as stated above
+    - or all the links will be hidden if .show-links is not shown
+    */
   height: 0;
-  overflow: hidden; /*hide the nav*/
+  overflow: hidden;
   transition: var(--transition);
 }
-/*
-- Use Javascript to add/remove this class off ul/class "link"
-    when toggle
-*/
 .show-links {
-  height: 10rem; 
+  height: 10rem;
 }
 @media screen and (min-width: 800px) {
   .nav-center {
@@ -228,13 +230,6 @@ nav {
     display: none;
   }
   .links {
-     /* IMPORTANT TO ADD 
-    - the class "show-links" is added/removed automatically with JS
-    - if "height: auto" is not added
-    - then the height of the Nav links when screen is over 800px
-    - will be either <height: 10rem;> as stated above
-    - or all the links will be hidden if .show-links is not shown
-    */
     height: auto;
     display: flex;
   }

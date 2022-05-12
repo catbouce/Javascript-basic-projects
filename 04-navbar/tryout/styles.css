@@ -71,7 +71,7 @@ Global Styles
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 0.5px dashed grey; */
+  /* border: 0.5px dashed gold; */
 }
 body {
   font-family: var(--ff-secondary);
@@ -164,8 +164,13 @@ Navbar
 ===============
 */
 nav {
-  background: var(--clr-white);
-  box-shadow: var(--light-shadow);
+  /* height: 4.5rem; */
+  background-color: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+}
+.nav-center {
+  /* max-width: var(--max-width); */
+  /* margin: 0 auto; */
 }
 .nav-header {
   display: flex;
@@ -173,93 +178,99 @@ nav {
   justify-content: space-between;
   padding: 1rem;
 }
+.logo {
+  height: 40px;
+}
 .nav-toggle {
+  border-color: transparent;
+  background-color: transparent;
   font-size: 1.5rem;
   color: var(--clr-primary-5);
-  background: transparent;
-  border-color: transparent;
+
   transition: var(--transition);
   cursor: pointer;
 }
 .nav-toggle:hover {
+
   color: var(--clr-primary-1);
   transform: rotate(90deg);
 }
-.logo {
-  height: 40px;
+.links {
+  /* display: block; */
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
 }
-
 .links a {
-  color: var(--clr-grey-3);
+  color: var(--clr-grey-2);
   font-size: 1rem;
   text-transform: capitalize;
   letter-spacing: var(--spacing);
   display: block;
-
+  /* padding: 0.5rem; */
   padding: 0.5rem 1rem;
+
   transition: var(--transition);
+
+  /* font-family: var(--ff-secondary); */
+  /* margin-left: 0.5rem; */
 }
 .links a:hover {
+
   background: var(--clr-primary-8);
   color: var(--clr-primary-5);
   padding-left: 1.5rem;
 }
+.show-links {
+  /* background-color: white; */
+  height: 10rem;
+
+}
 .social-icons {
   display: none;
 }
-.links {
-  height: 0;
-  overflow: hidden; 
-  transition: var(--transition);
-  /* border: 0.5px dashed grey; */
-}
-.show-links {
-  height: 10rem; 
-}
+@media screen and (min-width: 800px){
+    .nav-center {
+      display: flex;
+      justify-content: space-between;
 
-@media screen and (min-width: 800px) {
-  .nav-center {
-    max-width: 1170px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-  }
-  .nav-header {
-    padding: 0;
-  }
-  .nav-toggle {
-    display: none;
-  }
-  .links {
-     /* IMPORTANT TO ADD 
-    - the class "show-links" is added/removed automatically with JS
-    - if "height: auto" is not added
-    - then the height of the Nav links when screen is over 800px
-    - will be either <height: 10rem;> as stated above
-    - or all the links will be hidden if .show-links is not shown
-    */
-    height: auto;
-    display: flex;
-  }
-  .links a {
-    padding: 0;
-    margin: 0 0.5rem;
-  }
-  .links a:hover {
-    padding: 0;
-    background: transparent;
-  }
-  .social-icons {
-    display: flex;
-  }
-  .social-icons a {
-    margin: 0 0.5rem;
-    color: var(--clr-primary-5);
-    transition: var(--transition);
-  }
-  .social-icons a:hover {
-    color: var(--clr-primary-7);
-  }
+      max-width: 1170px;
+      margin: 0 auto;
+      align-items: center;
+      padding: 1rem;
+    }
+    .nav-header {
+
+      padding: 0;
+    }
+    .nav-toggle {
+      display: none;
+    }
+    .links {
+      display: flex;
+      height: auto;
+      /* align-items: center; */
+    
+    }
+    .links a {
+
+      padding: 0;
+      margin: 0 0.5rem;
+    }
+    .social-icons {
+      display: flex;
+      /* align-items: center; */
+      /* margin: 0 1rem; */
+    }
+  
+    .social-icons a {
+      margin: 0 0.5rem;
+      color: var(--clr-primary-5);
+      /* height: 100%; */
+      transition: var(--transition);
+    }
+    .social-icons a:hover {
+      
+      color: var(--clr-primary-7);
+    }
 }
