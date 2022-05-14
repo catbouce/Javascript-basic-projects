@@ -1,8 +1,24 @@
 /* 
 - use font-size on button/icon to change their size
 - do css for mobile as regular and do media query for desktop
+- on small screen, add display:block to the <a> links element,
+  not to the container (since <a> are inline element, we change 
+  it to block so they are on top of each others)
+- height: 100% gives the element 100% height of its parent container.
+  height: auto means the element height will depend upon the height of its children
+    
+    <div style="height: 50px">
+    <div id="innerDiv" style="height: 100%"></div>
+    --->#innerDiv is going to have height: 50px
 
-
+    <div style="height: 50px">
+    <div id="innerDiv" style="height: auto">
+          <div id="evenInner" style="height: 10px">
+          </div>
+    </div>
+    </div>
+    ----> #innerDiv is going to have height: 10px
+</div>
 */
 /*
 =============== 
@@ -169,6 +185,8 @@ nav {
   box-shadow: var(--dark-shadow);
 }
 .nav-center {
+  /* NOT NEEDED:  on small screen, nav-center take up the whole space */
+  /* there is padding: 1rem from nav-header to center the logo */
   /* max-width: var(--max-width); */
   /* margin: 0 auto; */
 }
@@ -190,15 +208,16 @@ nav {
   transition: var(--transition);
   cursor: pointer;
 }
-.nav-toggle:hover {
-
+.show-toggle {
+  /* MY CODE: helps the toggle button stay rotating when nav bar is open */
   color: var(--clr-primary-1);
   transform: rotate(90deg);
 }
 .links {
-  /* display: block; */
+  /* display: block; ADD this to <a> element instead*/
   height: 0;
   overflow: hidden;
+  /* this transition makes the nav goes up slowly instead of disapearing */
   transition: var(--transition);
 }
 .links a {
@@ -222,7 +241,7 @@ nav {
   padding-left: 1.5rem;
 }
 .show-links {
-  /* background-color: white; */
+  /* background-color: white; NOT NEEDED as we set nav element to have white background*/
   height: 10rem;
 
 }
@@ -234,7 +253,7 @@ nav {
       display: flex;
       justify-content: space-between;
 
-      max-width: 1170px;
+      max-width: var(--max-width);
       margin: 0 auto;
       align-items: center;
       padding: 1rem;
@@ -248,8 +267,9 @@ nav {
     }
     .links {
       display: flex;
+      /* height: auto vs height: 100% */
       height: auto;
-      /* align-items: center; */
+      /* align-items: center; NOT NEEDED- already set it on the nav-center element*/
     
     }
     .links a {

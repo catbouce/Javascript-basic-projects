@@ -46,7 +46,7 @@
       -	classList.add()
       -	classList.toggle()
       -	Template literals ${}
-
+      -     CSS: height: auto vs height: 100%
 5. Sidebar
 > #### Key concepts covered:
       -	document.querySelector()
