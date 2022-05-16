@@ -208,3 +208,8 @@
 29.  Comfy Sloth
 > #### Key concepts covered:
 
+
+
+30.  Comment App
+> #### Key concepts covered:
+      -  IF or Conditional (ternary) operator   

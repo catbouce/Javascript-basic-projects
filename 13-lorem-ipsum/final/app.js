@@ -19,23 +19,24 @@ const valueInput = document.getElementById('amount');
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  const randomNum = Math.floor(Math.random()*text.length);
-  loremText.innerHTML = `${text[randomNum]}`;
-  const valueToInt = parseInt(valueInput.value);
+  console.log('abc');
+  // const randomNum = Math.floor(Math.random()*text.length);
+  // loremText.innerHTML = `${text[randomNum]}`;
+  // const valueToInt = parseInt(valueInput.value);
 
-  if (isNaN(valueToInt) || valueToInt <= 0 || valueToInt > 9){
-    loremText.innerHTML = `<h4> please input number from 1 to 9! </h4>`;
-  }
-  else {
-    let tempValue = text.slice(0,valueToInt);
-    //doesn't work, only display one <p> 
-    //tempValue.map(function(item){
-    //   loremText.innerHTML = `<p>${item}</p>`;
-    //   console.log(item);
-    // }).join("");
-    tempValue = tempValue.map(function(item){
-      return `<p class="result">${item}</p>`
-    }).join("");
-    loremText.innerHTML = tempValue;
-  }
+  // if (isNaN(valueToInt) || valueToInt <= 0 || valueToInt > 9){
+  //   loremText.innerHTML = `<h4> please input number from 1 to 9! </h4>`;
+  // }
+  // else {
+  //   let tempValue = text.slice(0,valueToInt);
+  //   //doesn't work, only display one <p> 
+  //   //tempValue.map(function(item){
+  //   //   loremText.innerHTML = `<p>${item}</p>`;
+  //   //   console.log(item);
+  //   // }).join("");
+  //   tempValue = tempValue.map(function(item){
+  //     return `<p class="result">${item}</p>`
+  //   }).join("");
+  //   loremText.innerHTML = tempValue;
+  // }
 })
