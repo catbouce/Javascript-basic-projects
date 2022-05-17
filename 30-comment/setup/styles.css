@@ -256,7 +256,7 @@ button:hover{
   .form {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin: 6rem 0 2rem 0;
   }
   .panel {
     height: 80vh;
