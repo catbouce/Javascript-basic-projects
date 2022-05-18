@@ -71,62 +71,53 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
-  {
-    id: 10,
-    title: "Brazillian Steak",
-    category: "steak",
-    price: 39.99,
-    img: "./images/item-10.jpeg",
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-  }
 ];
-
-const sectionCenter = document.querySelector('.section-center');
-const btnContainer = document.querySelector('.btn-container');
-
-window.addEventListener('load',function(){
-  displayItem(menu);
-  displayFilter();
-
-  const filterBtn = document.querySelectorAll('.filter-btn');
-  filterBtn.forEach(function(btn){
-  btn.addEventListener('click',function(e){
-    filter(e.currentTarget.dataset.id);
-  })
-})
+// get parent element
+const sectionCenter = document.querySelector(".section-center");
+const btnContainer = document.querySelector(".btn-container");
+const filterBtns = document.querySelectorAll(".filter-btn");
+// display all items when page loads
+window.addEventListener("DOMContentLoaded", function () {
+  diplayMenuItems(menu);
 });
 
-function  displayFilter(){
-  let category = [...new Set(menu.map(item => item.category))];
-  category.unshift('all');
-  
-  let newFilterArr = category.map(function(item){
-    return `<button type="button" class="filter-btn" data-id="${item}">${item}</button>`;  
+filterBtns.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    // console.log(e.currentTarget.dataset);
+    const category = e.currentTarget.dataset.id;
+    const menuCategory = menu.filter(function (menuItem) {
+      // console.log(menuItem.category);
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    if (category === "all") {
+      diplayMenuItems(menu);
+    } else {
+      diplayMenuItems(menuCategory);
+    }
   });
-  btnContainer.innerHTML = newFilterArr.join('');
-}
+});
 
+function diplayMenuItems(menuItems) {
+  let displayMenu = menuItems.map(function (item) {
+    // console.log(item);
 
-
-function filter(category){
-  let newArr = menu.filter((item)=>item.category === category);
-  displayItem(newArr);
-}
-
-function displayItem(arr){
-  let newArr = arr.map(function(item){
     return `<article class="menu-item">
-              <img src="${item.img}" alt="menu item" class="photo"/>
-              <div class="item-info">
-                <header>
-                  <h4>${item.title}</h4>
-                  <h4 class="price">$${item.price}</h4>
-                </header>
-                <p class="item-text">
-                  ${item.desc}
-                </p>
-              </div>
-            </article>`;
-  }).join('');                        
-  sectionCenter.innerHTML = newArr; 
-}  
+          <img src=${item.img} alt=${item.title} class="photo" />
+          <div class="item-info">
+            <header>
+              <h4>${item.title}</h4>
+              <h4 class="price">$${item.price}</h4>
+            </header>
+            <p class="item-text">
+              ${item.desc}
+            </p>
+          </div>
+        </article>`;
+  });
+  displayMenu = displayMenu.join("");
+  // console.log(displayMenu);
+
+  sectionCenter.innerHTML = displayMenu;
+}

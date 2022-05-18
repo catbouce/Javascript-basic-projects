@@ -71,62 +71,29 @@ const menu = [
     img: "./images/item-9.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
-  {
-    id: 10,
-    title: "Brazillian Steak",
-    category: "steak",
-    price: 39.99,
-    img: "./images/item-10.jpeg",
-    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
-  }
 ];
 
-const sectionCenter = document.querySelector('.section-center');
-const btnContainer = document.querySelector('.btn-container');
+const sectionCenter = document.querySelector(".section-center");
 
-window.addEventListener('load',function(){
-  displayItem(menu);
-  displayFilter();
+window.addEventListener("DOMContentLoaded", function () {
+  let displayMenu = menu.map(function (item) {
+    // console.log(item);
 
-  const filterBtn = document.querySelectorAll('.filter-btn');
-  filterBtn.forEach(function(btn){
-  btn.addEventListener('click',function(e){
-    filter(e.currentTarget.dataset.id);
-  })
-})
-});
-
-function  displayFilter(){
-  let category = [...new Set(menu.map(item => item.category))];
-  category.unshift('all');
-  
-  let newFilterArr = category.map(function(item){
-    return `<button type="button" class="filter-btn" data-id="${item}">${item}</button>`;  
-  });
-  btnContainer.innerHTML = newFilterArr.join('');
-}
-
-
-
-function filter(category){
-  let newArr = menu.filter((item)=>item.category === category);
-  displayItem(newArr);
-}
-
-function displayItem(arr){
-  let newArr = arr.map(function(item){
     return `<article class="menu-item">
-              <img src="${item.img}" alt="menu item" class="photo"/>
-              <div class="item-info">
-                <header>
-                  <h4>${item.title}</h4>
-                  <h4 class="price">$${item.price}</h4>
-                </header>
-                <p class="item-text">
-                  ${item.desc}
-                </p>
-              </div>
-            </article>`;
-  }).join('');                        
-  sectionCenter.innerHTML = newArr; 
-}  
+          <img src=${item.img} alt=${item.title} class="photo" />
+          <div class="item-info">
+            <header>
+              <h4>${item.title}</h4>
+              <h4 class="price">$${item.price}</h4>
+            </header>
+            <p class="item-text">
+              ${item.desc}
+            </p>
+          </div>
+        </article>`;
+  });
+  displayMenu = displayMenu.join("");
+  console.log(displayMenu);
+
+  sectionCenter.innerHTML = displayMenu;
+});
