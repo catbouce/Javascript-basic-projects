@@ -63,7 +63,7 @@ Global Styles
 *,
 ::after,
 ::before {
-border: 1px dashed #E63C15;
+/* border: 1px dashed #E63C15; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;

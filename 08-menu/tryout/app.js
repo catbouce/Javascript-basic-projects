@@ -110,7 +110,10 @@ function  displayFilter(){
 
 function filter(category){
   let newArr = menu.filter((item)=>item.category === category);
-  displayItem(newArr);
+  (category !== 'all')
+  ?  (displayItem(newArr))
+  : (displayItem(menu));
+  
 }
 
 function displayItem(arr){
