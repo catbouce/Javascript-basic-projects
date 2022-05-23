@@ -4,6 +4,8 @@
 
 [Demo](https://www.vanillajavascriptprojects.com/)
 
+[Github](https://github.com/john-smilga/javascript-basic-projects/blob/master/10-scroll/final/app.js)
+
 1. Color Flipper
 
 > #### Key concepts covered:

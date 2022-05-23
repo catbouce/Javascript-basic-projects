@@ -277,6 +277,8 @@ nav {
   }
   .links-container {
     height: auto !important;
+     /* IMPORTANT: without it he nav bar won't adjust its height when adjusting the
+      screen size*/
   }
   .links {
     display: flex;
@@ -302,6 +304,12 @@ header {
   min-height: 100vh;
   background: linear-gradient(rgba(63, 208, 212, 0.5), rgba(0, 0, 0, 0.7)),
     url(./hero-bcg.jpeg) center/cover no-repeat;
+    
+  /*
+  multiple backgrounds, which layer over the top of each other, seprated by a coma
+    + first layer (top layer)
+    + second layer (picture)
+  */
 }
 .banner {
   min-height: 100vh;
